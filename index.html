@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en"> 
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+	<title>Bike Customization</title>
+	<link rel="stylesheet" href="css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/style.css">
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:600italic,400,800,700,300' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=BenchNine:300,400,700' rel='stylesheet' type='text/css'>
+	<script src="js/modernizr.js"></script>
+	<!--[if lt IE 9]>
+      <script src="js/html5shiv.js"></script>
+      <script src="js/respond.min.js"></script>
+    <![endif]-->
+	<style>
+		.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:hover, .navbar-default .navbar-nav>.active>a:focus{
+			background:black!important;
+			color: #42b3e5;
+		}
+	</style>
+</head>
+<body>
+	
+	<!-- ====================================================
+	header section -->
+
+	<header class="top-header">
+		<div class=""> <!-- class = containter -->
+			<div class="container">
+				<div class="col-xs-5 header-logo">
+					<br>
+					<a href="index.html"><img src="img/logo.png" alt="" class="img-responsive logo"></a>
+				</div>
+				<div class="col-md-7">
+					<nav class="navbar navbar-default">
+					  <div class="container-fluid nav-bar">
+					    <!-- Collect the nav links, forms, and other content for toggling -->
+					    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					      
+					      <ul class="nav navbar-nav navbar-right">
+					        <li><span class="menu color_black" style="cursor: pointer;"><i class="fa fa-refresh" aria-hidden="true"></i> StartOver</span></li>
+					        <li><span class="menu color_black" style="cursor: pointer;"><i class="fa fa-bars" aria-hidden="true"></i> ChangeModel</span></li>
+					      </ul>
+					    </div><!-- /navbar-collapse -->
+					  </div><!-- / .container-fluid -->
+					</nav>
+				</div>
+			</div>
+			<div>
+				<div class="row">
+					<nav class="navbar navbar-default" style="background: rgb(241,241,241);">
+
+					 	<div id="exTab1" class="container">	
+							<ul  class="nav navbar-nav navbar-right" style="float:left!important;">
+								<li class="active">
+									<a  id="1atab" href="#1a" data-toggle="tab">FRMAECOLOR</a>
+								</li>
+								<li>
+									<a id="2atab" href="#2a" data-toggle="tab">FRAME GRAPHICS</a>
+								</li>
+								<li>
+									<a id="3atab" href="#3a" data-toggle="tab">CUSTOM FLYWHEEL</a>
+								</li>
+							</ul>
+						</div>
+					</nav>
+					<div class="container">
+						<div class="col-md-7">
+							<canvas id="myCanvas" style="width:100%;" ></canvas>
+						</div>
+						<div class="tab-content tab_container col-md-5">
+							<h2 style="text-transform:capitalize;font-family: sans-serif;">Schwinn A.C. Performance Plus</h2>
+							<div class="tab-pane active" id="1a">
+								<div class="col-md-11">
+									<h2 style="font-weight: bold;font-family: initial">Frame Color</h2>
+									<table>
+										<tbody>
+											<tr>
+												<td><div id="Red" class="swatch swatch-clickable" style="background-color:#d11600"></div></td>
+												<td><div id="Orange" class="swatch swatch-clickable" style="background-color:#f96302"></div></td>
+												<td><div id="Banana" class="swatch swatch-clickable" style="background-color:#ffed38"></div></td>
+												<td><div id="Lemon" class="swatch swatch-clickable" style="background-color:#e5e111"></div></td>
+												<td><div id="Lime" class="swatch swatch-clickable" style="background-color:#cee007"></div></td>
+												<td><div id="Evergreen" class="swatch swatch-clickable" style="background-color:#339e35"></div></td>
+												<td><div id="Lunar Blue" class="swatch swatch-clickable" style="background-color:#60afdd"></div></td>
+												<td><div id="Grape" class="swatch swatch-clickable" style="background-color:#9b4f96"></div></td>
+												<td><div id="Hot Pink" class="swatch swatch-clickable" style="background-color:#fc0093"></div></td>
+												<td><div id="Sagebrush" class="swatch swatch-clickable" style="background-color:#c6c699"></div></td>
+												<td><div id="Tan" class="swatch swatch-clickable" style="background-color:tan"></div></td>
+												<td><div id="grey" class="swatch swatch-clickable" style="background-color:#00c699"></div></td>
+											</tr>
+											<tr>
+												<td><div id="Lunar Blue" class="swatch swatch-clickable" style="background-color:#60afdd"></div></td>
+												<td><div id="Grape" class="swatch swatch-clickable" style="background-color:#9b4f96"></div></td>
+												<td><div id="Hot Pink" class="swatch swatch-clickable" style="background-color:#fc0093"></div></td>
+												<td><div id="Sagebrush" class="swatch swatch-clickable" style="background-color:#c6c699"></div></td>
+												<td><div id="Tan" class="swatch swatch-clickable" style="background-color:tan"></div></td>
+												<td><div id="grey" class="swatch swatch-clickable" style="background-color:#aabb00"></div></td>
+												<td><div id="Red" class="swatch swatch-clickable" style="background-color:#d11600"></div></td>
+												<td><div id="Orange" class="swatch swatch-clickable" style="background-color:#f96302"></div></td>
+												<td><div id="Banana" class="swatch swatch-clickable" style="background-color:#ffed38"></div></td>
+												<td><div id="Lemon" class="swatch swatch-clickable" style="background-color:#e5e111"></div></td>
+												<td><div id="Lime" class="swatch swatch-clickable" style="background-color:#cee007"></div></td>
+												<td><div id="Evergreen" class="swatch swatch-clickable" style="background-color:#339e35"></div></td>
+											</tr>
+											<tr>
+												<td><div id="Red" class="swatch swatch-clickable" style="background-color:#d11600"></div></td>
+												<td><div id="Orange" class="swatch swatch-clickable" style="background-color:#f96302"></div></td>
+												<td><div id="Banana" class="swatch swatch-clickable" style="background-color:#ffed38"></div></td>
+												<td><div id="Lemon" class="swatch swatch-clickable" style="background-color:#e5e111"></div></td>
+												<td><div id="Lime" class="swatch swatch-clickable" style="background-color:#cee007"></div></td>
+												<td><div id="Evergreen" class="swatch swatch-clickable" style="background-color:#339e35"></div></td>
+												<td><div id="Lunar Blue" class="swatch swatch-clickable" style="background-color:#60afdd"></div></td>
+												<td><div id="Grape" class="swatch swatch-clickable" style="background-color:#9b4f96"></div></td>
+												<td><div id="Hot Pink" class="swatch swatch-clickable" style="background-color:#fc0093"></div></td>
+												<td><div id="Sagebrush" class="swatch swatch-clickable" style="background-color:#c6c699"></div></td>
+												<td><div id="Tan" class="swatch swatch-clickable" style="background-color:tan"></div></td>
+												<td><div id="grey" class="swatch swatch-clickable" style="background-color:#aabb00"></div></td>
+											</tr>
+											<tr>
+												<td><div id="Lunar Blue" class="swatch swatch-clickable" style="background-color:#60afdd"></div></td>
+												<td><div id="Grape" class="swatch swatch-clickable" style="background-color:#9b4f96"></div></td>
+												<td><div id="Hot Pink" class="swatch swatch-clickable" style="background-color:#fc0093"></div></td>
+												<td><div id="Sagebrush" class="swatch swatch-clickable" style="background-color:#c6c699"></div></td>
+												<td><div id="Tan" class="swatch swatch-clickable" style="background-color:tan"></div></td>
+												<td><div id="grey" class="swatch swatch-clickable" style="background-color:#bb00aa"></div></td>
+												<td><div id="Red" class="swatch swatch-clickable" style="background-color:#d11600"></div></td>
+												<td><div id="Orange" class="swatch swatch-clickable" style="background-color:#f96302"></div></td>
+												<td><div id="Banana" class="swatch swatch-clickable" style="background-color:#ffed38"></div></td>
+												<td><div id="Lemon" class="swatch swatch-clickable" style="background-color:#e5e111"></div></td>
+												<td><div id="Lime" class="swatch swatch-clickable" style="background-color:#cee007"></div></td>
+												<td><div id="Evergreen" class="swatch swatch-clickable" style="background-color:#339e35"></div></td>
+											</tr>
+										</tbody>
+									</table><br><br>
+									<div id="ins_part">
+										<h4>SPECIAL INSTRUCTION</h4>
+										<textarea style="width: 85%;"></textarea>
+									</div><br><br>
+									<div id="but_part">
+										<div class="btn btn-primary col-md-2" onclick="go(3)">BACK</div>
+										<div class="btn btn-primary col-md-2" onclick="go(2)" style="margin-left:20px;">NEXT</div>
+									</div>
+								</div>
+								
+								
+							</div>
+							<div class="tab-pane tab_container" id="2a">
+								<div class="row">
+									<h2 style="font-weight: bold;font-family: initial">Seat Post</h2>
+									<div class="upload">
+										<input id="seat-url" type="text" class="col-md-9">
+										<button id="browser-seat-button" class="browser-button col-md-3" style="">Browse...</button>
+										<div class="col-md-12" style="margin-top:10px;">
+											<button class="browser-seat-button" style="height: 30px;width: 65px;font-family: serif; border-radius:5px;">Upload</button>
+										</div>
+										<input id="seat-upload" type="file" accept="image/*" style="display: none;"/>
+									</div>
+									<br>
+									<h2 style="font-weight: bold;font-family: initial">Front Fork Mark</h2>
+									<div class="upload">
+										<input id="mark-url" type="text" class="col-md-9">
+										<button id="browser-mark-button" class="browser-button col-md-3" style="">Browse...</button>
+										<div class="col-md-12" style="margin-top:10px;">
+											<button class="browser-mark-button" style="height: 30px;width: 65px;font-family: serif; border-radius:5px;">Upload</button>
+										</div>
+										<input id="mark-upload" type="file" accept="image/*" style="display: none;"/>
+									</div>
+									<br>
+									<h2 style="font-weight: bold;font-family: initial">Front Fork Text</h2>
+									<div class="upload">
+										<input id="text-url" type="text" class="col-md-9">
+										<button id="browser-text-button" class="browser-button col-md-3" style="">Browse...</button>
+										<div class="col-md-12" style="margin-top:10px;">
+											<button class="browser-text-button" style="height: 30px;width: 65px;font-family: serif; border-radius:5px;">Upload</button>
+										</div>
+										<input id="text-upload" type="file" accept="image/*" style="display: none;"/>
+									</div>
+									<br><br>
+									<div style="clear:both;"></div>
+									<div class="ins_art" style="margin-top:30px;">
+										<h4>SPECIAL INSTRUCTION</h4>
+										<textarea style="width: 85%;"></textarea>
+									</div><br><br>
+									<div id="but_part">
+										<div class="btn btn-primary col-md-2" onclick="go(1)">BACK</div>
+										<div class="btn btn-primary col-md-2" onclick="go(3)" style="margin-left:20px;">NEXT</div>
+									</div>
+								</div>
+							</div>
+							<div class="tab-pane tab_container" id="3a">
+								<div class="row">
+									<h2 style="font-weight: bold;font-family: initial">Flywheel</h2>
+									<div class="upload">
+										<input id="wheel-url" type="text" class="col-md-9">
+										<button id="browser-wheel-button" class="browser-button col-md-3" style="">Browse...</button>
+										<div class="col-md-12" style="margin-top:10px;">
+											<button class="browser-wheel-button" style="height: 30px;width: 65px;font-family: serif; border-radius:5px;">Upload</button>
+										</div>
+										<input id="wheel-upload" type="file" accept="image/*" style="display: none;"/>
+									</div>
+									<br><br>
+									<div style="clear:both;"></div>
+									<div class="ins_art" style="margin-top:30px;">
+										<h4>SPECIAL INSTRUCTION</h4>
+										<textarea style="width: 85%;"></textarea>
+									</div><br><br>
+									<div id="but_part">
+										<div class="btn btn-primary col-md-2" onclick="go(2)">BACK</div>
+										<div class="btn btn-primary col-md-2" onclick="go(1)" style="margin-left:20px;">NEXT</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</header> <!-- end of header area -->
+
+	<!-- footer starts here -->
+	<footer class="footer clearfix">
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-6 footer-para">
+					<p>&copy;Dmitriy All right reserved</p>
+				</div>
+				<div class="col-xs-6 text-right">
+					<a href=""><i class="fa fa-facebook"></i></a>
+					<a href=""><i class="fa fa-twitter"></i></a>
+					<a href=""><i class="fa fa-skype"></i></a>
+				</div>
+			</div>
+		</div>
+	</footer>
+
+	<!-- script tags
+	============================================================= -->
+	<script src="js/jquery-2.1.1.js"></script>
+	<!--<script src="http://maps.google.com/maps/api/js?sensor=true"></script>-->
+	<script src="js/smoothscroll.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/fabric.js"></script>
+	<script>
+		var frame_img, seat_img, mark_img, text_img,wheel_img;
+		var set_flag = true;
+		var c = document.getElementById("myCanvas");
+		var ctx = c.getContext("2d");
+		c.width = c.offsetWidth;
+		c.height = c.offsetWidth / 1.57890625;
+		var mockup_rate;
+		var canvas = new fabric.Canvas('myCanvas');
+		var f = fabric.Image.filters;
+
+		fabric.Image.fromURL('img/stock-bike.jpg', function(img) {
+			mockup_rate = canvas.width/img.width;
+			mockup_img = img.set({ left: canvas.width/2-img.width*mockup_rate/2, top: canvas.height/2-img.height*mockup_rate/2, angle: 0, scaleX:mockup_rate, scaleY:mockup_rate, style:'opacity: 1;', selectable: false })
+			canvas.add(mockup_img);
+			canvas.renderAll();
+			fabric.Image.fromURL('img/Frame.png', function(img) {
+				var sss=img.width*mockup_rate;
+				var sss1 = img.height*mockup_rate;
+				frame_img = img.set({ left: canvas.width/2-sss/2-25, top: canvas.height/2-sss1/2+25, scaleX:mockup_rate, scaleY:mockup_rate, angle: 0, selectable: false})
+				// console.log(frame_img.left+","+frame_img.top);
+				canvas.add(frame_img);
+				canvas.renderAll();
+			});
+		});
+		canvas.on('mouse:down', function(e) { 
+			// e.target should be the circle
+		});
+		$(".swatch-clickable").on('click', function() {
+			console.log(frame_img);
+			//16, new f.BlendColor({color:'red', mode:'overlay'})
+			var color = this.style.backgroundColor;
+			frame_img.filters.push(new f.BlendColor({color:color, mode:'overlay'}));
+			frame_img.applyFilters();
+			canvas.renderAll();
+		});
+		$("#seat-upload").on('change', function(){ 
+			readURL(this);
+		});
+		$("#mark-upload").on('change', function(){ 
+			readURL(this);
+		});
+		$("#text-upload").on('change', function(){ 
+			readURL(this);
+		});
+		$("#wheel-upload").on('change', function(){ 
+			readURL(this);
+		});
+		$(".browser-button").on('click', function() {
+			id = this.id;
+			id = id.split('-');
+			
+			$("#"+id[1]+'-upload').click();
+		});
+		var readURL = function(input) {
+			console.log(input);
+			if (input.files && input.files[0]) {
+				var file, img;
+				var _URL = window.URL || window.webkitURL;
+				if ((file = input.files[0])) {
+					fabric.Image.fromURL(_URL.createObjectURL(file), function(img) {
+						canvas.remove(pattern_img);
+						document.getElementById("myCanvas").classList.remove("mask-class");
+						pattern_img_width = img.width;
+						pattern_img_height = img.height;
+						
+						console.log(img);
+						pattern_img = img.set({ left: canvas.width/2-img.width*mockup_rate, top: canvas.height/2-img.height*mockup_rate, scaleX:mockup_rate, scaleY:mockup_rate, angle: 0})
+
+						canvas.add(pattern_img);
+						set_flag = true;
+
+						
+					});
+				
+				}
+			}
+		}
+		function go(id){
+			$("#"+id+"atab").click();
+		}
+	</script>
+</body>
+</html>
