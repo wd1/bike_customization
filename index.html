@@ -23,14 +23,14 @@
 		}
 	</style>
 </head>
-<body>
+<body style="overflow: -moz-scrollbars-vertical;ovreflow-x:auto;">
 	
 	<!-- ====================================================
 	header section -->
 
 	<header class="top-header">
 		<div class=""> <!-- class = containter -->
-			<div class="container">
+			<div class="container" style="width:90%;">
 				<div class="col-xs-5 header-logo">
 					<br>
 					<a href="index.html"><img src="img/logo.png" alt="" class="img-responsive logo"></a>
@@ -50,26 +50,42 @@
 					</nav>
 				</div>
 			</div>
-			<div>
-				<div class="row">
-					<nav class="navbar navbar-default" style="background: rgb(241,241,241);">
+			<nav class="navbar navbar-default" style="background: rgb(241,241,241);">
 
-					 	<div id="exTab1" class="container">	
-							<ul  class="nav navbar-nav navbar-right" style="float:left!important;">
-								<li class="active">
-									<a  id="1atab" href="#1a" data-toggle="tab">FRMAECOLOR</a>
-								</li>
-								<li>
-									<a id="2atab" href="#2a" data-toggle="tab">FRAME GRAPHICS</a>
-								</li>
-								<li>
-									<a id="3atab" href="#3a" data-toggle="tab">CUSTOM FLYWHEEL</a>
-								</li>
-							</ul>
-						</div>
-					</nav>
-					<div class="container">
+				<div id="exTab1" class="container" style="width:90%;">	
+					<ul  class="nav navbar-nav navbar-right" style="float:left!important;">
+						<li class="active">
+							<a  id="1atab" href="#1a" data-toggle="tab">FRMAECOLOR</a>
+						</li>
+						<li>
+							<a id="2atab" href="#2a" data-toggle="tab">FRAME GRAPHICS</a>
+						</li>
+						<li>
+							<a id="3atab" href="#3a" data-toggle="tab">CUSTOM FLYWHEEL</a>
+						</li>
+					</ul>
+				</div>
+			</nav>
+			<div>
+				<div id="main_panel" style="overflow-x: auto;height: 650px;">
+					<div class="container"  style="width:90%;">
 						<div class="col-md-7">
+							 <div class="row" style="margin-top:20px;">
+								 <div style="margin: auto;width: 50%;">
+									<select id="bike_type" style="font-size: 16px;font-weight: bold;border: 2px solid;">
+										<option value="Schwinn AC Sportcycle">Schwinn AC Sportcycle</option>
+										<option value="Schwinn AC Sport Cycle Carbonblue">Schwinn AC Sportcycle Carbonblue</option>
+										<option value="Schwinn ACPP Carbonblue">Schwinn ACPP Carbonblue</option>
+										<option value="Schwinn IC Pro 20">Schwinn IC Pro 20</option>
+										<option value="Star Trac Studio 7">Schwinn IC Pro Cycle</option>
+										<option value="Star Trac Studio 7">Star Trac Blade</option>
+										<option value="Star Trac Studio 7">Star Trac NXT</option>
+										<option value="Star Trac Studio 7">Star Trac Studio3</option>
+										<option value="Star Trac Studio 7">Star Trac Studio5</option>
+										<option value="Star Trac Studio 7">Star Trac Studio 7</option>
+									</select>
+								</div> 
+							</div>
 							<canvas id="myCanvas" style="width:100%;" ></canvas>
 						</div>
 						<div class="tab-content tab_container col-md-5">
@@ -224,7 +240,7 @@
 
 	<!-- footer starts here -->
 	<footer class="footer clearfix">
-		<div class="container">
+		<div class="container"  style="width:90%;">
 			<div class="row">
 				<div class="col-xs-6 footer-para">
 					<p>&copy;Dmitriy All right reserved</p>
@@ -246,29 +262,98 @@
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/fabric.js"></script>
 	<script>
+		var positions = {'Schwinn AC Sportcycle':{'x':786,'y':599,'width':146,'height':159},
+						'Schwinn AC Sportcycle Carbonblue':{'x':920,'y':701,'width':173,'height':188},
+						'Schwinn ACPP Carbonblue':{'x':775,'y':705,'width':187,'height':187},
+						'Schwinn IC Pro 20':{'x':760,'y':535,'width':246,'height':255},
+						'Star Trac Studio 7':{'x':579,'y':452,'width':254,'height':258},
+						'Schwinn IC Pro Cycle':{'x':891,'y':607,'width':328,'height':320},
+						'Star Trac Blade':{'x':806,'y':722,'width':334,'height':341},
+						'Star Trac NXT':{'x':815,'y':731,'width':300,'height':319},
+						'Star Trac Studio3':{'x':842,'y':653,'width':294,'height':299},
+						'Star Trac Studio5':{'x':823,'y':723,'width':308,'height':315},
+					};
+		var this_wheel_position = {'x':0,'y':0,'width':0, 'height':0};
+		var screenheight = Math.min(document.body.scrollHeight,document.body.offsetHeight,document.documentElement.clientHeight,document.documentElement.scrollHeight,document.documentElement.offsetHeight);
+		document.getElementById("main_panel").style.height = (document.body.scrollHeight-270) +"px";
 		var frame_img, seat_img, mark_img, text_img,wheel_img;
 		var set_flag = true;
 		var c = document.getElementById("myCanvas");
 		var ctx = c.getContext("2d");
-		c.width = c.offsetWidth;
-		c.height = c.offsetWidth / 1.57890625;
+		console.log(c);
+		c.width = c.parentNode.offsetWidth;
+		c.height = c.width;
 		var mockup_rate;
 		var canvas = new fabric.Canvas('myCanvas');
 		var f = fabric.Image.filters;
-
-		fabric.Image.fromURL('img/stock-bike.jpg', function(img) {
-			mockup_rate = canvas.width/img.width;
-			mockup_img = img.set({ left: canvas.width/2-img.width*mockup_rate/2, top: canvas.height/2-img.height*mockup_rate/2, angle: 0, scaleX:mockup_rate, scaleY:mockup_rate, style:'opacity: 1;', selectable: false })
-			canvas.add(mockup_img);
-			canvas.renderAll();
-			fabric.Image.fromURL('img/Frame.png', function(img) {
-				var sss=img.width*mockup_rate;
-				var sss1 = img.height*mockup_rate;
-				frame_img = img.set({ left: canvas.width/2-sss/2-25, top: canvas.height/2-sss1/2+25, scaleX:mockup_rate, scaleY:mockup_rate, angle: 0, selectable: false})
-				// console.log(frame_img.left+","+frame_img.top);
-				canvas.add(frame_img);
+		$("#seat-url").val('');
+		$("#mark-url").val('');
+		$("#text-url").val('');
+		$("#wheel-url").val('');
+		bike_load();
+		// fabric.Image.fromURL('img/stock-bike.jpg', function(img) {
+		// 	mockup_rate = canvas.width/img.width;
+		// 	mockup_img = img.set({ left: canvas.width/2-img.width*mockup_rate/2, top: canvas.height/2-img.height*mockup_rate/2, angle: 0, scaleX:mockup_rate, scaleY:mockup_rate, style:'opacity: 1;', selectable: false })
+		// 	canvas.add(mockup_img);
+		// 	canvas.renderAll();
+		// 	fabric.Image.fromURL('img/Frame.png', function(img) {
+		// 		var sss=img.width*mockup_rate;
+		// 		var sss1 = img.height*mockup_rate;
+		// 		frame_img = img.set({ left: canvas.width/2-sss/2, top: canvas.height/2-sss1/2, scaleX:mockup_rate, scaleY:mockup_rate, angle: 0, selectable: false})
+		// 		// console.log(frame_img.left+","+frame_img.top);
+		// 		canvas.add(frame_img);
+		// 		canvas.renderAll();
+		// 	});
+		// 	// fabric.Image.fromURL('img/wheel.png', function(img) {
+		// 	// 	var sss=img.width*mockup_rate;
+		// 	// 	var sss1 = img.height*mockup_rate;
+		// 	// 	wheel_img = img.set({ left: canvas.width/2-sss/2, top: canvas.height/2-sss1/2, scaleX:mockup_rate, scaleY:mockup_rate, angle: 0, selectable: false})
+		// 	// 	// console.log(frame_img.left+","+frame_img.top);
+		// 	// 	canvas.add(wheel_img);
+		// 	// 	canvas.renderAll();
+		// 	// });
+			
+		// });
+		var sss, sss1;
+		
+		function bike_load() {
+			var val = $("#bike_type option:selected").text();
+			var val1=val.split(' ').join('-');
+			this_wheel_position.x = positions[val].x;
+			this_wheel_position.y = positions[val].y;
+			this_wheel_position.width = positions[val].width;
+			this_wheel_position.height = positions[val].height;
+			canvas.remove(wheel_img);
+			fabric.Image.fromURL('img/'+val+'/'+val1+'.png', function(img) {
+				mockup_rate = canvas.width/img.width<canvas.height/img.height?canvas.width/img.width:canvas.height/img.height;
+				console.log(canvas.width/img.width);
+				console.log(canvas.height/img.height);
+				console.log(mockup_rate);
+				mockup_img = img.set({ left: canvas.width/2-img.width*mockup_rate/2, top: canvas.height/2-img.height*mockup_rate/2, angle: 0, scaleX:mockup_rate, scaleY:mockup_rate, style:'opacity: 1;', selectable: false })
+				canvas.add(mockup_img);
 				canvas.renderAll();
+				fabric.Image.fromURL('img/'+val+'/'+val1+'-Frame.png', function(img) {
+					sss=img.width*mockup_rate;
+					sss1 = img.height*mockup_rate;
+					frame_img = img.set({ left: canvas.width/2-sss/2, top: canvas.height/2-sss1/2, scaleX:mockup_rate, scaleY:mockup_rate, angle: 0, selectable: false})
+					// console.log(frame_img.left+","+frame_img.top);
+					canvas.add(frame_img);
+					canvas.renderAll();
+				});
+
+				fabric.Image.fromURL('img/'+val+'/'+val1+'-Flywheel.png', function(img) {
+					var sss=img.width*mockup_rate;
+					var sss1 = img.height*mockup_rate;
+					// wheel_img = img.set({ left: canvas.width/2-wheel_offset_x*(canvas.width/2/488), top: canvas.height/2-wheel_offset_y*(canvas.height/2/309), scaleX:mockup_img.scaleX, scaleY:mockup_img.scaleY, angle: 0, selectable:false})
+					wheel_img = img.set({ left: this_wheel_position.x*mockup_rate, top: this_wheel_position.y*mockup_rate, scaleX:mockup_img.scaleX, width:this_wheel_position.width*mockup_rate, height:this_wheel_position.height*mockup_rate, scaleY:mockup_img.scaleY, angle: 0, selectable:false});
+					canvas.add(wheel_img);
+					canvas.renderAll();
+					// canvas.setActiveObject(wheel_img);
+				});
 			});
+		}
+		$('#bike_type').change(function() {
+			bike_load();
 		});
 		canvas.on('mouse:down', function(e) { 
 			// e.target should be the circle
@@ -277,47 +362,83 @@
 			console.log(frame_img);
 			//16, new f.BlendColor({color:'red', mode:'overlay'})
 			var color = this.style.backgroundColor;
-			frame_img.filters.push(new f.BlendColor({color:color, mode:'overlay'}));
+			frame_img.filters.push(new f.BlendColor({color:color, mode:'tint'}));
 			frame_img.applyFilters();
 			canvas.renderAll();
 		});
 		$("#seat-upload").on('change', function(){ 
-			readURL(this);
+			readURL(this,0);
 		});
 		$("#mark-upload").on('change', function(){ 
-			readURL(this);
+			readURL(this,1);
 		});
 		$("#text-upload").on('change', function(){ 
-			readURL(this);
+			readURL(this,2);
 		});
 		$("#wheel-upload").on('change', function(){ 
-			readURL(this);
+			readURL(this,3);
 		});
 		$(".browser-button").on('click', function() {
 			id = this.id;
-			id = id.split('-');
-			
+			id = id.split('-');	
 			$("#"+id[1]+'-upload').click();
 		});
-		var readURL = function(input) {
-			console.log(input);
+		var seat_offset_x = 488-320.3755566551212;
+		var seat_offset_y = 309-231.43889163780307;
+		var mark_offset_x = 488-632.1316180108856;
+		var mark_offset_y = 309-206.25333993072735;
+		var text_offset_x = 488-661.1316180108856;
+		var text_offset_y = 309-290.25333993072735;
+		var wheel_offset_x = 488-597.6922315685304;
+		var wheel_offset_y = 309-289.6922315685304;
+		var readURL = function(input,obj) {
+			if(seat_img)
+				console.log("seat"+seat_img.width+","+seat_img.height);
+			if(mark_img)
+				console.log("mark"+mark_img.width+","+mark_img.height);
+			if(text_img)
+				console.log("text"+text_img.width+","+text_img.height);
+			if(wheel_img)
+				console.log("wheel"+wheel_img.width+","+wheel_img.height);
 			if (input.files && input.files[0]) {
 				var file, img;
 				var _URL = window.URL || window.webkitURL;
 				if ((file = input.files[0])) {
+					console.log(file);
 					fabric.Image.fromURL(_URL.createObjectURL(file), function(img) {
-						canvas.remove(pattern_img);
-						document.getElementById("myCanvas").classList.remove("mask-class");
-						pattern_img_width = img.width;
-						pattern_img_height = img.height;
-						
-						console.log(img);
-						pattern_img = img.set({ left: canvas.width/2-img.width*mockup_rate, top: canvas.height/2-img.height*mockup_rate, scaleX:mockup_rate, scaleY:mockup_rate, angle: 0})
-
-						canvas.add(pattern_img);
+						var val1=file.name.split('-').join(' ');
+						switch (obj) {
+							case 0:
+								$("#seat-url").val(file.name);
+								canvas.remove(seat_img);
+								seat_img = img.set({ left: canvas.width/2-seat_offset_x*(canvas.width/2/488), top: canvas.height/2-seat_offset_y*(canvas.height/2/309), scaleX:20/img.width, scaleY:20/img.width, angle: 0})
+								canvas.add(seat_img);
+								canvas.setActiveObject(seat_img);
+								break;
+							case 1:
+								$("#mark-url").val(file.name);
+								canvas.remove(mark_img);
+								mark_img = img.set({ left:canvas.width/2-mark_offset_x*(canvas.width/2/488), top: canvas.height/2-mark_offset_y*(canvas.height/2/309), scaleX:20/img.width, scaleY:20/img.width, angle: 0})
+								canvas.add(mark_img);
+								canvas.setActiveObject(mark_img);
+								break;
+							case 2:
+								$("#text-url").val(file.name);
+								canvas.remove(text_img);
+								text_img = img.set({ left: canvas.width/2-text_offset_x*(canvas.width/2/488), top: canvas.height/2-text_offset_y*(canvas.height/2/309), scaleX:37/img.width, scaleY:37/img.width, angle: 0})
+								canvas.add(text_img);
+								canvas.setActiveObject(text_img);
+								break;
+							case 3:
+								$("#wheel-url").val(file.name);
+								canvas.remove(wheel_img);
+								// wheel_img = img.set({ left: canvas.width/2-wheel_offset_x*(canvas.width/2/488), top: canvas.height/2-wheel_offset_y*(canvas.height/2/309), scaleX:mockup_img.scaleX, scaleY:mockup_img.scaleY, angle: 0, selectable:false})
+								wheel_img = img.set({ left: this_wheel_position.x*mockup_rate, top: this_wheel_position.y*mockup_rate, scaleX:mockup_img.scaleX, scaleY:mockup_img.scaleY, angle: 0, selectable:true});
+								canvas.add(wheel_img);
+								canvas.setActiveObject(wheel_img);
+								break;
+						}
 						set_flag = true;
-
-						
 					});
 				
 				}
